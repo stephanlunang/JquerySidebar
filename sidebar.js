@@ -1,29 +1,22 @@
-
-/*
-$('html').click(function() {
-  //Hide the menus if visible
-});
-
-$('.leftnav').click(function(event){
-    event.stopPropagation();
-});
-*/
-if (Meteor.isClient) {
- 
-  // This code only runs on the client
+if (Meteor.isClient) { 
   angular.module('sidebar',['angular-meteor']);
  
   angular.module('sidebar').controller('SidebarCtrl', ['$scope',
     function ($scope) {
-      $('.menubutton').on('click', function (){
-        $('#BanditDiv').addClass('animated shake').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-          function(){
-            $(this).removeClass('animated shake')
+      function DeployMenu (callback){
+        $('.menubutton').on('click', function (){
+          $('.leftnav').css({"box-shadow" : "5px 5px 5px #888888"});
+          $('.leftnav').animate({left : "0px"}, 500, function(){
+            $('.main').click(function() {
+              $('.leftnav').animate({left: "-300px"}, 500);
+              $('.leftnav').css({"box-shadow" : "none"});
+            });
+            $('.leftnav').click(function(event){
+              event.stopPropagation();
+            }); 
           });
-      }); 
+        });    
+      }
+      DeployMenu();
   }]);
-}
-
-
-if (Meteor.isClient) {
 }

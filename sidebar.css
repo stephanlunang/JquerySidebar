@@ -50,9 +50,6 @@ body{
 	border-radius: 5px;
 }
 
-.menubutton:focus{
-  	outline: 0;
-}
 
 .icon-bar1 {
 	position: fixed;
@@ -97,5 +94,5 @@ body{
 	width: 300px;
 	height: 100vh;
 	z-index: 9001;
-	background-color: yellow;
+	background-color: #000066;
 }
